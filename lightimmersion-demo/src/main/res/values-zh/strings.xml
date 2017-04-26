@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">LightImmersionMode</string>
+    <string name="normal_activity">activity一般的使用方式</string>
+    <string name="changeconfig">activity修改临时配置</string>
+    <string name="fragment">fragment演示效果</string>
+    <string name="first_view_text">第一个</string>
+    <string name="second_view_text">第二个</string>
+    <string name="third_view_text">第三个</string>
+    <string name="first_fragment">fragment A\n\n在父activity容器中修改颜色</string>
+    <string name="second_fragment">fragment B\n\n在父activity容器中修改颜色</string>
+    <string name="third_fragment">fragment C\n\n在父activity容器中修改颜色</string>
+</resources>

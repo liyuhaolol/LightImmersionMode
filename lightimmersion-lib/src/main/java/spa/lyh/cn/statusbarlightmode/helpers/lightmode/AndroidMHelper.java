@@ -1,4 +1,4 @@
-package spa.lyh.cn.statusbarlightmode.helpers;
+package spa.lyh.cn.statusbarlightmode.helpers.lightmode;
 
 import android.app.Activity;
 import android.os.Build;
@@ -14,10 +14,8 @@ public class AndroidMHelper implements ILightModeHelper{
     public boolean setLightMode(Activity activity, boolean isLightMode) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             if (isLightMode){
-                //非沉浸式
                 activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
             }else {
-                //非沉浸式
                 activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
             }
             return true;

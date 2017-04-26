@@ -1,4 +1,4 @@
-package spa.lyh.cn.statusbarlightmode.helpers;
+package spa.lyh.cn.statusbarlightmode.helpers.lightmode;
 
 import android.app.Activity;
 

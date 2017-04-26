@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">LightImmersionMode</string>
+    <string name="normal_activity">normal activity</string>
+    <string name="changeconfig">activity changeConfig</string>
+    <string name="fragment">in fragment</string>
+    <string name="first_view_text">first</string>
+    <string name="second_view_text">second</string>
+    <string name="third_view_text">third</string>
+    <string name="first_fragment">fragment A\n\nchange color in parent activity</string>
+    <string name="second_fragment">fragment B\n\nchange color in parent activity</string>
+    <string name="third_fragment">fragment C\n\nchange color in parent activity</string>
 </resources>

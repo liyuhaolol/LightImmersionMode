@@ -3,9 +3,17 @@ package spa.lyh.cn.statusbarlightmode.barutils;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 /**
  * Created by liyuhao on 2017/4/2.
@@ -50,5 +58,34 @@ public class barUtils {
         ViewGroup vg = (ViewGroup) ((ViewGroup) activity.findViewById(android.R.id.content)).getChildAt(0);
         vg.setFitsSystemWindows(true);
         vg.setClipToPadding(false);
+    }
+
+    public static Bitmap getBitmapFromView(View v)
+    {
+        Bitmap b = Bitmap.createBitmap(v.getWidth(), v.getHeight(), Bitmap.Config.RGB_565);
+        Canvas c = new Canvas(b);
+        v.layout(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+        // Draw background
+        Drawable bgDrawable = v.getBackground();
+        if (bgDrawable != null)
+        {
+            bgDrawable.draw(c);
+        }
+        else
+        {
+            c.drawColor(Color.WHITE);
+        }
+        // Draw view to canvas
+        v.draw(c);
+        if (null != b) {
+            int pixel = b.getPixel(200, 5);
+            //获取颜色
+            int redValue = Color.red(pixel);
+            int greenValue = Color.green(pixel);
+            int blueValue = Color.blue(pixel);
+            Log.e("CCCCCC", "【颜色值】 #" + Integer.toHexString(pixel).toUpperCase());
+            //b.recycle();
+        }
+        return b;
     }
 }

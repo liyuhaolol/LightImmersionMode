@@ -3,4 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="DarkGray">#D0D0D0</color>
+    <color name="BLack">#000000</color>
+    <color name="Yellow">#ffff00</color>
+    <color name="White">#ffffff</color>
+    <color name="LightGray">#c0c0c0</color>
+    <color name="Green">#00ff00</color>
+    <color name="bar_color">#fed952</color>
+    <color name="GrayGreen">#83AF9B</color>
 </resources>
