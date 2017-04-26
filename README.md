@@ -84,7 +84,7 @@ public static int DISABLE = 101;
     `setTemporaryResIdColor()`:传入资源id型Color，默认为：`#D0D0D0`
     `setTemporaryStringColor()`:传入String型Color，默认为：`#D0D0D0`
 
-##框架的完成思路
+## 框架的完成思路
 - 沉浸式状态栏的实现思路
     `API LEVEL >= 19 && API LEVEL < 21`
     使用`window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);`开启沉浸式
