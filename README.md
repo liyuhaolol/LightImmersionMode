@@ -76,19 +76,26 @@ public static int DISABLE = 101;
 - `ImmersionConfiguration`和`TemporaryConfig`的属性是一样的
 
 - `ImmersionConfiguration`的属性设置方法
+
     `enableImmersionMode()`:是否启动沉浸式状态栏，默认为：`ENABLE`
+
     `defaultColor()`:传入资源id或者String型Color，默认为：`#D0D0D0`
 
 - `TemporaryConfig`的属性设置方法
+
     `setEnable()`:是否启动沉浸式状态栏，默认为：`0`
+
     `setTemporaryResIdColor()`:传入资源id型Color，默认为：`#D0D0D0`
+
     `setTemporaryStringColor()`:传入String型Color，默认为：`#D0D0D0`
 
 ## 框架的完成思路
 - 沉浸式状态栏的实现思路
-    `API LEVEL >= 19 && API LEVEL < 21`
-    使用`window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);`开启沉浸式
-    并在状态栏位置添加一个带有对应颜色的View填充
+
+    `API LEVEL >= 19 && API LEVEL < 21`:
+
+    使用`window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);`开启沉浸式并在状态栏位置添加一个带有对应颜色的View填充
+
     `API LEVEL >= 21`:
     ```java
     Window window = activity.getWindow();
