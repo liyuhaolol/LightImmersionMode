@@ -12,7 +12,6 @@ import spa.lyh.cn.lightimmersionmode.base.BaseActivity;
 import spa.lyh.cn.lightimmersionmode.fragment.FirstFagment;
 import spa.lyh.cn.lightimmersionmode.fragment.SecondFragment;
 import spa.lyh.cn.lightimmersionmode.fragment.ThirdFragment;
-import spa.lyh.cn.statusbarlightmode.TemporaryConfig;
 
 /**
  * Created by liyuhao on 2017/4/26.
@@ -30,7 +29,6 @@ public class FragmentActivity extends BaseActivity implements View.OnClickListen
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment);
-        System.out.println("==activity-onCreate==");
 
         first = (RelativeLayout) findViewById(R.id.first_layout_view);
         second = (RelativeLayout) findViewById(R.id.second_layout_view);
@@ -93,35 +91,5 @@ public class FragmentActivity extends BaseActivity implements View.OnClickListen
                 break;
         }
         ft.commit();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        System.out.println("==activity-onStart==");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        System.out.println("==activity-onResume==");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        System.out.println("==activity-onPause==");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        System.out.println("==activity-onDestroy==");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        System.out.println("==activity-onRestart==");
     }
 }
