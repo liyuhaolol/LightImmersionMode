@@ -65,7 +65,9 @@ public void changeStatusBarColor(String color){
     }
 }
 ```
+
 ## Config的所有属性介绍
+
 ```java
 //启动
 public static int ENABLE = 100;
@@ -90,6 +92,7 @@ public static int DISABLE = 101;
     `setTemporaryStringColor()`:传入String型Color，默认为：`#D0D0D0`
 
 ## 框架的完成思路
+
 - 沉浸式状态栏的实现思路
 
     `API LEVEL >= 19 && API LEVEL < 21`:
@@ -102,6 +105,32 @@ public static int DISABLE = 101;
     window.setStatusBarColor(color);
     ```
     实现方式为直接修改状态栏颜色，非沉浸式实现
+
+- 浅色状态栏的实现思路
+    系统必须为MIUI或者Flyme或者`API LEVEL >= 23`的其他系统，这里不展示MIUI与Flyme的实现思路只展示原生的开发思路
+
+    ```java
+    //设置为浅色状态栏模式，深色字体
+    activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+    //设置为普通的状态栏模式，浅色字体
+    activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+    ```
+- 深浅色判断逻辑
+
+    通过YUV模式，用色彩明亮度，色度，浓度来判断深浅色
+    ```java
+    public static boolean isLightRGB(int[] colors){
+        int grayLevel = (int) (colors[0] * 0.299 + colors[1] * 0.587 + colors[2] * 0.114);
+        if(grayLevel>=192){
+            return true;
+        }
+        return false;
+    }
+    ```
+## 注意事项
+
+-因为`API LEVEL >= 19 && API LEVEL < 21`时，使用的沉浸式开发，需要或得对应的`ViewGroup`进行设置，所以如果本框架的方法在`onCreate()`方法中调用，`Android 5.0`以下的系统会无法获取到对应的`View`造成`空指针`，所以如果你开发的项目最低`API LEVEL >= 19`，那么推荐本框架在`onResume()`方法中调用，如果你的最低`API LEVEL >= 21`，则可以在任意生命周期里调用
+
 ## 联系方式
 
 - Github: https://github.com/liyuhaolol
