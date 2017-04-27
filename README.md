@@ -12,6 +12,24 @@
 - 可以添加临时config在单独的activity起效，不影响全局配置
 - 兼容浅色状态栏，自动变为深色字体（需要系统支持）
 
+## 引用方法
+
+- 在gradle中:
+```
+    compile 'spa.lyh.cn:immersion-sdk:1.0.0'
+```
+
+- 在maven中：
+```
+
+<dependency>
+	<groupId>spa.lyh.cn</groupId>
+	<artifactId>immersion-sdk</artifactId>
+	<version>1.0.0</version>
+	<type>pom</type>
+</dependency>
+```
+
 ## 主要的类介绍
 
 - `ImmersionMode` : 沉浸式状态栏的主体类
