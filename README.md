@@ -151,7 +151,7 @@ public static int DISABLE = 101;
     ```
 ## 注意事项
 
--因为`API LEVEL >= 19 && API LEVEL < 21`时，使用的沉浸式开发，需要或得对应的`ViewGroup`进行设置，所以如果本框架的方法在`onCreate()`方法中调用，`Android 5.0`以下的系统会无法获取到对应的`View`造成`空指针`，所以如果你开发的项目最低`API LEVEL < 21`，那么推荐本框架在`onResume()`方法中调用，如果你的最低`API LEVEL >= 21`，则可以在任意生命周期里调用
+- 因为`API LEVEL >= 19 && API LEVEL < 21`时，使用的沉浸式开发，需要或得对应的`ViewGroup`进行设置，所以如果本框架的方法在`onCreate()`方法中调用，`Android 5.0`以下的系统会无法获取到对应的`View`造成`空指针`，所以如果你开发的项目最低`API LEVEL < 21`，那么推荐本框架在`onResume()`方法中调用，如果你的最低`API LEVEL >= 21`，则可以在任意生命周期里调用
 
 ## 联系方式
 
