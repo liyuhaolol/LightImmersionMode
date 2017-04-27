@@ -1,1 +1,1 @@
-include ':lightimmersion-demo', ':lightimmersion-lib'
+include ':lightimmersion-demo', ':immersion-sdk'

@@ -19,7 +19,8 @@ import android.view.WindowManager;
 
 public class barUtils {
     /**
-     * 判断是不是浅色
+     * * 判断是不是浅色
+     * @param colors 颜色数组
      * @return 是否为浅色
      */
     public static boolean isLightRGB(int[] colors){
@@ -31,8 +32,9 @@ public class barUtils {
     }
 
     /**
-     * 用于获取状态栏的高度。 使用Resource对象获取
+     * * 用于获取状态栏的高度。 使用Resource对象获取
      *
+     * @param context 上下文
      * @return 返回状态栏高度的像素值。
      */
     public static int getStatusBarHeight(Context context) {
@@ -47,7 +49,7 @@ public class barUtils {
     /**
      * 修改状态栏为全透明沉浸式
      *
-     * @param activity
+     * @param activity activity对象
      */
     @TargetApi(19)
     public static void transparencyBar(Activity activity) {
