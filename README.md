@@ -4,7 +4,7 @@
 
 # 效果演示
 
-<div><img src='https://github.com/liyuhaolol/BannerButton/blob/master/pic/01.jpg' width="487px"/></div>
+<div><img src='https://github.com/liyuhaolol/LightImmersionMode/blob/master/pic/01.gif' width="480px"/></div>
 
 # 1.0.0更新
 
