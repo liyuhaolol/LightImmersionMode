@@ -2,6 +2,10 @@
 
 十分方便的实现纯色沉浸式状态栏的开发，只需要使用代码，不需要在布局额外写任何东西
 
+# 效果演示
+
+<div><img src='https://github.com/liyuhaolol/BannerButton/blob/master/pic/01.jpg' width="487px"/></div>
+
 # 1.0.0更新
 
 - 支持activity，fragment中兼容沉浸式状态栏
