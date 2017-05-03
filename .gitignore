@@ -5,6 +5,7 @@
 .DS_Store
 /build
 /captures
+/build.gradle
 .externalNativeBuild
 /build.gradle
 /lightimmersion-demo/build.gradle
