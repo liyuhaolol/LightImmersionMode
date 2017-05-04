@@ -9,4 +9,7 @@
     <string name="first_fragment">fragment A\n\n在父activity容器中修改颜色</string>
     <string name="second_fragment">fragment B\n\n在父activity容器中修改颜色</string>
     <string name="third_fragment">fragment C\n\n在父activity容器中修改颜色</string>
+    <string name="disable_mode">关闭ImmersionMode框架</string>
+    <string name="note">本Activity不是继承自BaseActivity,不能修改状态栏</string>
+    <string name="disable_note">本Activity继承自BaseActivity, 但是关闭了Immersionmode</string>
 </resources>

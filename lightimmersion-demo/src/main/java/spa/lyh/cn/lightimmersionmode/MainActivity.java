@@ -29,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(MainActivity.this, FragmentActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.disable:
+                intent = new Intent(MainActivity.this, DisableActivity.class);
+                startActivity(intent);
+                break;
             default:
                 break;
         }

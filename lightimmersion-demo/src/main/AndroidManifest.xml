@@ -20,6 +20,7 @@
         <activity android:name=".NormalActivity"/>
         <activity android:name=".ChangeActivity"/>
         <activity android:name=".FragmentActivity"/>
+        <activity android:name=".DisableActivity"/>
     </application>
 
 </manifest>

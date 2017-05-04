@@ -1,6 +1,8 @@
 package spa.lyh.cn.lightimmersionmode.base;
 
 import android.os.Build;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import spa.lyh.cn.statusbarlightmode.ImmersionMode;
@@ -14,9 +16,14 @@ public class BaseActivity extends AppCompatActivity{
     public ImmersionMode immersionMode;
 
     @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        immersionMode = ImmersionMode.getInstance();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
-        immersionMode = ImmersionMode.getInstance();
         immersionMode.execImmersionMode(this);
     }
 
