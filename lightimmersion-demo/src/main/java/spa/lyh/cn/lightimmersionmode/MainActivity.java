@@ -33,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(MainActivity.this, DisableActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.gone:
+                intent = new Intent(MainActivity.this, GoneActivity.class);
+                startActivity(intent);
+                break;
             default:
                 break;
         }

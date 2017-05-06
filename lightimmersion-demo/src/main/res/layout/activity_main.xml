@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="24dp"/>
     <TextView
+        android:id="@+id/ttt"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_below="@+id/vvv"
@@ -18,37 +19,48 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:text="@string/note"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ttt">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+            <Button
+                android:id="@+id/normalactivity"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="@string/normal_activity"
+                android:onClick="onClick"/>
+            <Button
+                android:id="@+id/changeconfig"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="@string/changeconfig"
+                android:onClick="onClick"/>
+            <Button
+                android:id="@+id/fragment"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="@string/fragment"
+                android:onClick="onClick"/>
+            <Button
+                android:id="@+id/disable"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="@string/disable_mode"
+                android:onClick="onClick"/>
+            <Button
+                android:id="@+id/gone"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="@string/status_gone"
+                android:onClick="onClick"/>
+        </LinearLayout>
+    </ScrollView>
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_centerInParent="true"
-    >
-    <Button
-        android:id="@+id/normalactivity"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="@string/normal_activity"
-        android:onClick="onClick"/>
-    <Button
-        android:id="@+id/changeconfig"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="@string/changeconfig"
-        android:onClick="onClick"/>
-    <Button
-        android:id="@+id/fragment"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="@string/fragment"
-        android:onClick="onClick"/>
-    <Button
-        android:id="@+id/disable"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="@string/disable_mode"
-        android:onClick="onClick"/>
-</LinearLayout>
 
 </RelativeLayout>

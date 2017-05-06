@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <View
+        android:id="@+id/vvv"
+        android:background="@color/bar_color"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"/>
+    <TextView
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gone_note"
+        android:layout_below="@+id/vvv"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerInParent="true">
+        <Button
+            android:id="@+id/Bgone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/make_gone"
+            android:onClick="onClick"/>
+        <View
+            android:layout_width="20dp"
+            android:layout_height="5dp"/>
+        <Button
+            android:id="@+id/Bvisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/make_visible"
+            android:onClick="onClick"/>
+    </LinearLayout>
+
+</RelativeLayout>

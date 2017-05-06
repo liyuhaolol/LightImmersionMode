@@ -3,6 +3,7 @@ package spa.lyh.cn.statusbarlightmode;
 import android.app.Activity;
 import android.os.Build;
 import android.util.Log;
+import android.view.View;
 
 import spa.lyh.cn.statusbarlightmode.helpers.immersionmode.ImmersionHelper;
 
@@ -16,6 +17,8 @@ public class ImmersionMode {
     private static ImmersionMode instance;
     private ImmersionConfiguration configuration;
     private TemporaryConfig tConfig;
+
+    private View starusView;
 
 
     public static ImmersionMode getInstance(){
@@ -60,7 +63,7 @@ public class ImmersionMode {
                 setTemporaryConfiguration(tConfig);
             }
             if (configuration.enable == ImmersionConfiguration.ENABLE){
-                ImmersionHelper.statusBarFitToAPP(activity,configuration.defaultColor);
+                starusView = ImmersionHelper.statusBarFitToAPP(activity,configuration.defaultColor);
             }
 
             configuration = config;
@@ -81,6 +84,27 @@ public class ImmersionMode {
         }
         if (tConfig.getTemporaryColor() != 0){
             configuration.defaultColor = tConfig.getTemporaryColor();
+        }
+    }
+
+    /**
+     * only work between sdk 19 and sdk 21
+     */
+    public void setStarusViewGONE(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+            if (starusView != null){
+                starusView.setVisibility(View.GONE);
+            }
+        }
+    }
+    /**
+     * only work between sdk 19 and sdk 21
+     */
+    public void setStarusViewVISIBLE(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+            if (starusView != null){
+                starusView.setVisibility(View.VISIBLE);
+            }
         }
     }
 }
