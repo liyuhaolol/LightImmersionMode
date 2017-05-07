@@ -14,11 +14,6 @@ public class ChangeActivity extends BaseActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
         changeStatusBarColor(R.color.colorAccent);
     }
 }

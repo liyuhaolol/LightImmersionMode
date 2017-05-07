@@ -2,12 +2,12 @@ package spa.lyh.cn.lightimmersionmode.base;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import spa.lyh.cn.statusbarlightmode.ImmersionConfiguration;
 import spa.lyh.cn.statusbarlightmode.ImmersionMode;
-import spa.lyh.cn.statusbarlightmode.TemporaryConfig;
 
 /**
  * Created by liyuhao on 2017/4/26.
@@ -16,6 +16,8 @@ import spa.lyh.cn.statusbarlightmode.TemporaryConfig;
 public class BaseActivity extends AppCompatActivity{
     public ImmersionMode immersionMode;
 
+    private boolean flag;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,36 +25,43 @@ public class BaseActivity extends AppCompatActivity{
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        immersionMode.execImmersionMode(this);
+    public void setContentView(@LayoutRes int layoutResID) {
+        super.setContentView(layoutResID);
+        flag = immersionMode.execImmersionMode(this);
     }
 
     public void changeStatusBarColor(int ResId){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
-            TemporaryConfig tConfig = new TemporaryConfig(this);
-            tConfig.setTemporaryResIdColor(ResId);
+            ImmersionConfiguration tConfig = new ImmersionConfiguration.Builder(this)
+                    .setColor(ResId)
+                    .build();
             immersionMode.setTemporaryConfig(tConfig);
             immersionMode.execImmersionMode(this);
         }
     }
     public void changeStatusBarColor(String color){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
-            TemporaryConfig tConfig = new TemporaryConfig(this);
-            tConfig.setTemporaryStringColor(color);
+            ImmersionConfiguration tConfig = new ImmersionConfiguration.Builder(this)
+                    .setColor(color)
+                    .build();
             immersionMode.setTemporaryConfig(tConfig);
             immersionMode.execImmersionMode(this);
         }
     }
 
     /**
-     * 这个方法必须在immersionMode.execImmersionMode(this);之前调用，也就是在onResume()之前调用，
-     * 沉浸式一旦启动，就不可逆，请注意。
+     * 这个方法必须在setContentView()之前调用，因为沉浸式是不可逆的过程
+     * 沉浸式一旦启动，就不可逆，请注意!此方法主要为了兼容sdk 21以下，sdk 21以上为新api，与沉浸式无关
      */
     public void DisableImmersionMode(){
-        TemporaryConfig config = new TemporaryConfig(this);
-        config.setEnable(ImmersionConfiguration.DISABLE);
-        immersionMode.setTemporaryConfig(config);
+        if (!flag){
+            ImmersionConfiguration tConfig = new ImmersionConfiguration.Builder(this)
+                    .enableImmersionMode(ImmersionConfiguration.DISABLE)
+                    .build();
+            immersionMode.setTemporaryConfig(tConfig);
+        }else {
+            immersionMode.throwDisableERROR(this);
+        }
     }
 
     /**

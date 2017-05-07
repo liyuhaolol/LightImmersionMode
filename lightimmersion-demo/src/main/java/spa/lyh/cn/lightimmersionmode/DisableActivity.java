@@ -14,11 +14,7 @@ public class DisableActivity extends BaseActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_disablemode);
-        /**
-         * config must be set before function:'immersionMode.execImmersionMode(this)',
-         * therefore, config should init in onCreate(), function exec in onResume()
-         */
         DisableImmersionMode();
+        setContentView(R.layout.activity_disablemode);
     }
 }
