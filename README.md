@@ -50,7 +50,7 @@
 ImmersionConfiguration configuration = new ImmersionConfiguration
         .Builder(this)
         .enableImmersionMode(ImmersionConfiguration.ENABLE)
-        .defaultColor(R.color.bar_color)
+        .setColor(R.color.bar_color)
         .build();
 //完成ImmersionMode的配置初始化
 ImmersionMode.getInstance().init(configuration);
@@ -95,7 +95,6 @@ ImmersionMode.getInstance().init(configuration);
             immersionMode.execImmersionMode(this);
         }
     }
-}
 ```
 
 ## Config的所有属性介绍
@@ -111,7 +110,7 @@ public static int DISABLE = 101;
 
     `enableImmersionMode()`:是否启动沉浸式状态栏，默认为：`ENABLE`
 
-    `defaultColor()`:传入资源id或者String型Color，默认为：`#D0D0D0`
+    `setColor()`:传入资源id或者String型Color，默认为：`#D0D0D0`
 
 ## 框架的完成思路
 
