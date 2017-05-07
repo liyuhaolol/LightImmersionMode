@@ -6,17 +6,19 @@
 
 <div><img src='https://github.com/liyuhaolol/LightImmersionMode/blob/master/pic/01.gif' width="480px"/></div>
 
-# 1.0.0更新
+# 1.0.2更新
 
-- 支持activity，fragment中兼容沉浸式状态栏
-- 可以添加临时config在单独的activity起效，不影响全局配置
-- 兼容浅色状态栏，自动变为深色字体（需要系统支持）
+- 添加关闭框架的方法演示
+- 添加`Android4.4`显示或者隐藏插入的statusView方法演示
+- 删除了TemporaryConfig类，使用ImmersionConfiguration来完成
+- 大幅度修改框架运行逻辑，避免在`Android4.4`中，出现的种种BUG
+- `Android4.4`实现沉浸式较为复杂，所以只能使用较为复杂的逻辑来保证不会出现BUG，`Android5.0`以上都是非常简单的调用，不用考虑生命周期，也不用考虑调用方法先后顺序。如果有需要单独大于`Android5.0`的框架，请在issues中留言，我会酌情考虑。
 
 ## 引用方法
 
 - 在gradle中:
 ```
-    compile 'spa.lyh.cn:immersion-sdk:1.0.0'
+    compile 'spa.lyh.cn:immersion-sdk:1.0.2'
 ```
 
 - 在maven中：
@@ -25,7 +27,7 @@
 <dependency>
 	<groupId>spa.lyh.cn</groupId>
 	<artifactId>immersion-sdk</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.2</version>
 	<type>pom</type>
 </dependency>
 ```
@@ -34,7 +36,6 @@
 
 - `ImmersionMode` : 沉浸式状态栏的主体类
 - `ImmersionConfiguration` : 沉浸式状态栏的配置类
-- `TemporaryConfig` : 沉浸式状态栏的临时配置类
 
 ## 使用方式
 
@@ -54,36 +55,45 @@ ImmersionConfiguration configuration = new ImmersionConfiguration
 //完成ImmersionMode的配置初始化
 ImmersionMode.getInstance().init(configuration);
 ```
-在activity的`onResume()`生命周期中调用对应方法来完成
+在activity的`onCreate()`生命周期中完成单例，并需要重写`setContentView()`方法，在其中完成方法调用
 
 ```java
-@Override
-protected void onResume() {
-    super.onResume();
-    immersionMode = ImmersionMode.getInstance();
-    immersionMode.execImmersionMode(this);
-}
-```
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        immersionMode = ImmersionMode.getInstance();
+    }
 
-修改临时配置的方法，设置的为TemporaryConfig，一次性不会影响默认的配置
-
-```java
-//使用资源的colorID赋值
-public void changeStatusBarColor(int ResId){
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
-        TemporaryConfig tConfig = new TemporaryConfig(this);
-        tConfig.setTemporaryResIdColor(ResId);
-        immersionMode.setTemporaryConfig(tConfig);
+    @Override
+    public void setContentView(@LayoutRes int layoutResID) {
+        super.setContentView(layoutResID);
         immersionMode.execImmersionMode(this);
     }
 }
-//使用String的Color
-public void changeStatusBarColor(String color){
+```
+
+修改临时配置的方法，一次性的设置不会影响默认的配置，再次加载会重新加载默认设置
+
+```java
+    //使用资源的colorID赋值
+    public void changeStatusBarColor(int ResId){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
-        TemporaryConfig tConfig = new TemporaryConfig(this);
-        tConfig.setTemporaryStringColor(color);
-        immersionMode.setTemporaryConfig(tConfig);
-        immersionMode.execImmersionMode(this);
+            ImmersionConfiguration tConfig = new ImmersionConfiguration.Builder(this)
+                    .setColor(ResId)
+                    .build();
+            immersionMode.setTemporaryConfig(tConfig);
+            immersionMode.execImmersionMode(this);
+        }
+    }
+    //使用String的Color
+    public void changeStatusBarColor(String color){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+            ImmersionConfiguration tConfig = new ImmersionConfiguration.Builder(this)
+                    .setColor(color)
+                    .build();
+            immersionMode.setTemporaryConfig(tConfig);
+            immersionMode.execImmersionMode(this);
+        }
     }
 }
 ```
@@ -97,21 +107,11 @@ public static int ENABLE = 100;
 public static int DISABLE = 101;
 ```
 
-- `ImmersionConfiguration`和`TemporaryConfig`的属性是一样的
-
 - `ImmersionConfiguration`的属性设置方法
 
     `enableImmersionMode()`:是否启动沉浸式状态栏，默认为：`ENABLE`
 
     `defaultColor()`:传入资源id或者String型Color，默认为：`#D0D0D0`
-
-- `TemporaryConfig`的属性设置方法
-
-    `setEnable()`:是否启动沉浸式状态栏，默认为：`0`
-
-    `setTemporaryResIdColor()`:传入资源id型Color，默认为：`#D0D0D0`
-
-    `setTemporaryStringColor()`:传入String型Color，默认为：`#D0D0D0`
 
 ## 框架的完成思路
 
@@ -151,7 +151,9 @@ public static int DISABLE = 101;
     ```
 ## 注意事项
 
-- 因为`API LEVEL >= 19 && API LEVEL < 21`时，使用的沉浸式开发，需要或得对应的`ViewGroup`进行设置，所以如果本框架的方法在`onCreate()`方法中调用，`Android 5.0`以下的系统会无法获取到对应的`View`造成`空指针`，所以如果你开发的项目最低`API LEVEL < 21`，那么推荐本框架在`onResume()`方法中调用，如果你的最低`API LEVEL >= 21`，则可以在任意生命周期里调用
+- 因为`API LEVEL >= 19 && API LEVEL < 21`时，使用的沉浸式开发，方法`immersionMode.execImmersionMode(this);`会在`setContentView()`完成以后立刻调用，又因为沉浸式开发，是不可逆的设置，意思就是如果开启沉浸式，除非重新加载`Activity`否则无法翻转此状态。所以想要关闭本框架，那么对应方法必须在`setContentView()`之前调用，否则在`Android4.4`上会出现框架依然启动的BUG。
+- 最低`API LEVEL >= 21时，可以无视上述问题，因为`Android5.0`以上并没有使用沉浸式开发，所以使用本框架可以不许重写`setContentView()`等种种限制运行顺序和生命周期的方式，只要在`onResume()`之前任意位置调用即可。
+
 
 ## 联系方式
 
