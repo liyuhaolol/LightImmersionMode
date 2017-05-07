@@ -152,7 +152,7 @@ public static int DISABLE = 101;
 ## 注意事项
 
 - 因为`API LEVEL >= 19 && API LEVEL < 21`时，使用的沉浸式开发，方法`immersionMode.execImmersionMode(this);`会在`setContentView()`完成以后立刻调用，又因为沉浸式开发，是不可逆的设置，意思就是如果开启沉浸式，除非重新加载`Activity`否则无法翻转此状态。所以想要关闭本框架，那么对应方法必须在`setContentView()`之前调用，否则在`Android4.4`上会出现框架依然启动的BUG。
-- 最低`API LEVEL >= 21时，可以无视上述问题，因为`Android5.0`以上并没有使用沉浸式开发，所以使用本框架可以不许重写`setContentView()`等种种限制运行顺序和生命周期的方式，只要在`onResume()`之前任意位置调用即可。
+- 最低`API LEVEL >= 21`时，可以无视上述问题，因为`Android5.0`以上并没有使用沉浸式开发，所以使用本框架可以不许重写`setContentView()`等种种限制运行顺序和生命周期的方式，只要在`onResume()`之前任意位置调用即可。
 
 
 ## 联系方式
