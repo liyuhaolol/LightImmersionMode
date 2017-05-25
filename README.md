@@ -46,7 +46,7 @@
 
 - 本框架沉浸式效果仅支持`API LEVEL >= 19`以上的系统才可以生效对应效果
 - 本框架浅色状态栏，自适应字体仅支持MIUI或者Flyme系统，或者`API LEVEL >= 23`的其他系统才会有对应效果
-- 本框架支持最低`API LEVEL >= 8`但是`API LEVEL < 19`，会造成本框架不运行，不会造成程序崩溃
+- 本框架支持最低`API LEVEL >= 11`但是`API LEVEL < 19`，会造成本框架不运行，不会造成程序崩溃
 
 先完成`ImmersionMode`和`ImmersionConfiguration`的初始化配置
 
