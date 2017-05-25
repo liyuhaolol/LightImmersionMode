@@ -6,6 +6,11 @@
 
 <div><img src='https://github.com/liyuhaolol/LightImmersionMode/blob/master/pic/01.gif' width="480px"/></div>
 
+
+# 1.0.3更新
+
+- 修复对Flyme6.0以上的支持，这个锅是魅族的，他偷偷改了api
+
 # 1.0.2更新
 
 - 添加关闭框架的方法演示

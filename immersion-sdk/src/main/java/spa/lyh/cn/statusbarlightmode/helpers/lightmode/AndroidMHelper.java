@@ -2,6 +2,7 @@ package spa.lyh.cn.statusbarlightmode.helpers.lightmode;
 
 import android.app.Activity;
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -20,6 +21,7 @@ public class AndroidMHelper implements ILightModeHelper{
             }
             return true;
         }
+        Log.e("LightModeException","Failed to match Android 6.0");
         return false;
     }
 }
