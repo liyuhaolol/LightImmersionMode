@@ -23,7 +23,7 @@
 
 - 在gradle中:
 ```
-    compile 'spa.lyh.cn:immersion-sdk:1.0.2'
+    compile 'spa.lyh.cn:immersion-sdk:1.0.3'
 ```
 
 - 在maven中：
@@ -32,7 +32,7 @@
 <dependency>
 	<groupId>spa.lyh.cn</groupId>
 	<artifactId>immersion-sdk</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 	<type>pom</type>
 </dependency>
 ```
