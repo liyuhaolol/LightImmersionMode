@@ -3,6 +3,8 @@ package spa.lyh.cn.statusbarlightmode;
 import android.app.Activity;
 import android.os.Build;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import spa.lyh.cn.statusbarlightmode.helpers.immersionmode.ImmersionHelper;
 
@@ -15,7 +17,9 @@ public class ImmersionMode {
 
     private static ImmersionMode instance;
     private ImmersionConfiguration configuration;
-    private TemporaryConfig tConfig;
+    private ImmersionConfiguration temporaryConfig;
+
+    private View starusView;
 
 
     public static ImmersionMode getInstance(){
@@ -42,8 +46,8 @@ public class ImmersionMode {
         }
     }
 
-    public void setTemporaryConfig(TemporaryConfig config){
-        this.tConfig = config;
+    public void setTemporaryConfig(ImmersionConfiguration config){
+        this.temporaryConfig = config;
     }
 
     public void destory(){
@@ -53,19 +57,23 @@ public class ImmersionMode {
         }
     }
 
-    public void execImmersionMode(Activity activity){
+    public boolean execImmersionMode(Activity activity){
+        boolean mark = false;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
             ImmersionConfiguration config = backupConfig(configuration);
-            if (tConfig != null){
-                setTemporaryConfiguration(tConfig);
+            if (temporaryConfig != null){
+                setTemporaryConfiguration(temporaryConfig);
             }
             if (configuration.enable == ImmersionConfiguration.ENABLE){
-                ImmersionHelper.statusBarFitToAPP(activity,configuration.defaultColor);
+
+                starusView = ImmersionHelper.statusBarFitToAPP(activity,configuration.defaultColor);
+                mark = true;
             }
 
             configuration = config;
-            tConfig = null;
+            temporaryConfig = null;
         }
+        return mark;
     }
 
     private ImmersionConfiguration backupConfig(ImmersionConfiguration configuration){
@@ -75,12 +83,34 @@ public class ImmersionMode {
                 .build();
         return config;
     }
-    private void setTemporaryConfiguration(TemporaryConfig tConfig){
-        if (tConfig.getEnable() != 0){
-            configuration.enable = tConfig.getEnable();
+    private void setTemporaryConfiguration(ImmersionConfiguration tConfig){
+            configuration.enable = tConfig.enable;
+            configuration.defaultColor = tConfig.defaultColor;
+    }
+
+    /**
+     * only work between sdk 19 and sdk 21
+     */
+    public void setStarusViewGONE(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+            if (starusView != null){
+                starusView.setVisibility(View.GONE);
+            }
         }
-        if (tConfig.getTemporaryColor() != 0){
-            configuration.defaultColor = tConfig.getTemporaryColor();
+    }
+    /**
+     * only work between sdk 19 and sdk 21
+     */
+    public void setStarusViewVISIBLE(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+            if (starusView != null){
+                starusView.setVisibility(View.VISIBLE);
+            }
         }
+    }
+
+    public void throwDisableERROR(Activity activity){
+        Log.e(TAG,"Disable must called before 'setContentView()',or it will not work properly.");
+        Toast.makeText(activity,"Disable must called before 'setContentView()',or it will not work properly.",Toast.LENGTH_LONG).show();
     }
 }

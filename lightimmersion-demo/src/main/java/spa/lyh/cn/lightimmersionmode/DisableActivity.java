@@ -6,14 +6,15 @@ import android.support.annotation.Nullable;
 import spa.lyh.cn.lightimmersionmode.base.BaseActivity;
 
 /**
- * Created by liyuhao on 2017/4/26.
+ * Created by liyuhao on 2017/5/4.
  */
 
-public class ChangeActivity extends BaseActivity{
+public class DisableActivity extends BaseActivity{
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change);
-        changeStatusBarColor(R.color.colorAccent);
+        DisableImmersionMode();
+        setContentView(R.layout.activity_disablemode);
     }
 }

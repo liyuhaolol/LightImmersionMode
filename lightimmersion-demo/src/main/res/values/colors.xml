@@ -11,4 +11,5 @@
     <color name="Green">#00ff00</color>
     <color name="bar_color">#fed952</color>
     <color name="GrayGreen">#83AF9B</color>
+    <color name="title_bg_color">#3577C5</color>
 </resources>

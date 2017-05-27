@@ -37,7 +37,7 @@ public class ImmersionConfiguration {
             return this;
         }
 
-        public ImmersionConfiguration.Builder defaultColor(String color){
+        public ImmersionConfiguration.Builder setColor(String color){
             try{
                 this.defaultColor = Color.parseColor(color);
             }catch (Exception e){
@@ -46,7 +46,7 @@ public class ImmersionConfiguration {
             }
             return this;
         }
-        public ImmersionConfiguration.Builder defaultColor(int resID){
+        public ImmersionConfiguration.Builder setColor(int resID){
             try {
                 this.defaultColor = context.getResources().getColor(resID);
             }catch (Exception e){
