@@ -7,6 +7,10 @@
 <div><img src='https://github.com/liyuhaolol/LightImmersionMode/blob/master/pic/01.gif' width="480px"/></div>
 
 
+# 1.0.4更新
+
+- 修复对MIUI开发版7.7.13以上的支持，就是支持从2017年7月13日以后发布的所有MIUI稳定版和开发版，不更新会造成浅色模式在MIUI上失效。
+
 # 1.0.3更新
 
 - 修复对Flyme6.0以上的支持，这个锅是魅族的，他偷偷改了api
@@ -23,7 +27,7 @@
 
 - 在gradle中:
 ```
-    compile 'spa.lyh.cn:immersion-sdk:1.0.3'
+    compile 'spa.lyh.cn:immersion-sdk:1.0.4'
 ```
 
 - 在maven中：
@@ -32,7 +36,7 @@
 <dependency>
 	<groupId>spa.lyh.cn</groupId>
 	<artifactId>immersion-sdk</artifactId>
-	<version>1.0.3</version>
+	<version>1.0.4</version>
 	<type>pom</type>
 </dependency>
 ```
