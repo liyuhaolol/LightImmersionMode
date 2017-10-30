@@ -26,6 +26,6 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
-    //compile 'spa.lyh.cn:immersion-sdk:1.0.4'
-    compile project(':immersion-sdk')
+    compile 'spa.lyh.cn:immersion-sdk:1.0.5'
+    //compile project(':immersion-sdk')
 }

@@ -7,6 +7,10 @@
 <div><img src='https://github.com/liyuhaolol/LightImmersionMode/blob/master/pic/01.gif' width="480px"/></div>
 
 
+# 1.0.5更新
+
+- 优化代码，保存手机型号版本从而使匹配机型报错提示只出现一次
+
 # 1.0.4更新
 
 - 修复对MIUI开发版7.7.13以上的支持，就是支持从2017年7月13日以后发布的所有MIUI稳定版和开发版，不更新会造成浅色模式在MIUI上失效。
@@ -27,7 +31,7 @@
 
 - 在gradle中:
 ```
-    compile 'spa.lyh.cn:immersion-sdk:1.0.4'
+    compile 'spa.lyh.cn:immersion-sdk:1.0.5'
 ```
 
 - 在maven中：
@@ -36,7 +40,7 @@
 <dependency>
 	<groupId>spa.lyh.cn</groupId>
 	<artifactId>immersion-sdk</artifactId>
-	<version>1.0.4</version>
+	<version>1.0.5</version>
 	<type>pom</type>
 </dependency>
 ```
