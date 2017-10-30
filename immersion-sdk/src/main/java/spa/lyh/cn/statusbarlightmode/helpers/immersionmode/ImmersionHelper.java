@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 
+import spa.lyh.cn.statusbarlightmode.ImmersionMode;
 import spa.lyh.cn.statusbarlightmode.helpers.lightmode.AndroidMHelper;
 import spa.lyh.cn.statusbarlightmode.helpers.lightmode.FlymeHelper;
 import spa.lyh.cn.statusbarlightmode.helpers.lightmode.MIUIHelper;
@@ -27,7 +28,9 @@ public class ImmersionHelper {
         int blueValue = Color.blue(color);
         int[] colorArry = new int[]{redValue,greenValue,blueValue};
         View v = changeStatusBarColor(activity,color);
-        setStatusBarMode(activity,isLightRGB(colorArry));
+        if (!setStatusBarMode(activity,isLightRGB(colorArry))){//retry once,incase failed
+            setStatusBarMode(activity,isLightRGB(colorArry));
+        }
         return v;
     }
 
@@ -50,12 +53,60 @@ public class ImmersionHelper {
 
     private static boolean setStatusBarMode(Activity activity,boolean isLightMode){
         boolean flag = false;
-        if (new MIUIHelper().setLightMode(activity,isLightMode)){
+        /*if (new MIUIHelper().setLightMode(activity,isLightMode)){
             flag = true;
         }else if (new FlymeHelper().setLightMode(activity,isLightMode)){
             flag = true;
         }else if (new AndroidMHelper().setLightMode(activity,isLightMode)){
             flag = true;
+        }*/
+
+        switch (ImmersionMode.getInstance().getPhoneType()){
+            case 1:
+                if (new MIUIHelper().setLightMode(activity,isLightMode)){
+                    ImmersionMode.getInstance().setPhoneType(1);
+                    flag = true;
+                }else {
+                    ImmersionMode.getInstance().setPhoneType(0);
+                    flag = false;
+                }
+                break;
+            case 2:
+                if (new FlymeHelper().setLightMode(activity,isLightMode)){
+                    ImmersionMode.getInstance().setPhoneType(2);
+                    flag = true;
+                }else {
+                    ImmersionMode.getInstance().setPhoneType(0);
+                    flag = false;
+                }
+                break;
+            case 3:
+                if (new AndroidMHelper().setLightMode(activity,isLightMode)){
+                    ImmersionMode.getInstance().setPhoneType(3);
+                    flag = true;
+                }else {
+                    ImmersionMode.getInstance().setPhoneType(0);
+                    flag = false;
+                }
+                break;
+            case 4:
+                break;
+            case 0:
+            default:
+                if (new MIUIHelper().setLightMode(activity,isLightMode)){
+                    ImmersionMode.getInstance().setPhoneType(1);
+                    flag = true;
+                }else if (new FlymeHelper().setLightMode(activity,isLightMode)){
+                    ImmersionMode.getInstance().setPhoneType(2);
+                    flag = true;
+                }else if (new AndroidMHelper().setLightMode(activity,isLightMode)){
+                    ImmersionMode.getInstance().setPhoneType(3);
+                    flag = true;
+                }else {
+                    ImmersionMode.getInstance().setPhoneType(4);
+                    flag = true;
+                }
+                break;
         }
         return flag;
     }

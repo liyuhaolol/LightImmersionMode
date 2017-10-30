@@ -21,6 +21,9 @@ public class ImmersionMode {
 
     private View starusView;
 
+    //手机型号或者版本,0为未检测,1为MIUI,2为Flyme,3为Android6.0以上,4为Android6.0以下
+    private int PhoneType = 0;
+
 
     public static ImmersionMode getInstance(){
         if (instance == null){
@@ -112,5 +115,21 @@ public class ImmersionMode {
     public void throwDisableERROR(Activity activity){
         Log.e(TAG,"Disable must called before 'setContentView()',or it will not work properly.");
         Toast.makeText(activity,"Disable must called before 'setContentView()',or it will not work properly.",Toast.LENGTH_LONG).show();
+    }
+
+    /**
+     * get phoneType
+     * @return code
+     */
+    public int getPhoneType() {
+        return PhoneType;
+    }
+
+    /**
+     * set phoneType
+     * @param phoneType code
+     */
+    public void setPhoneType(int phoneType) {
+        PhoneType = phoneType;
     }
 }
