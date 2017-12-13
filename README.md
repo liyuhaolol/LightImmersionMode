@@ -6,6 +6,9 @@
 
 <div><img src='https://github.com/liyuhaolol/LightImmersionMode/blob/master/pic/01.gif' width="480px"/></div>
 
+# 1.0.6更新
+
+- 将`Android5.0`以下的状态栏颜色显示状态统一交付给Android底层处理，用来统一处理浅色状态栏字体显示不清的问题，具体影响为`API LEVEL = 21`的设备将无法设置你指定的状态栏颜色，因为底层会对你传来的状态栏进行二次处理。具体表现形式为`API LEVEL = 19`的设备将显示齿状暗纹，`API LEVEL = 21`的设备将整体显示变灰，目前已在原生系统上测试通过，本框架将不会对小于`Android6.0`暴力深度定制的第三方rom出现的问题进行适配，只会徒增烦恼而已。
 
 # 1.0.5更新
 
@@ -31,7 +34,7 @@
 
 - 在gradle中:
 ```
-    compile 'spa.lyh.cn:immersion-sdk:1.0.5'
+    compile 'spa.lyh.cn:immersion-sdk:1.0.6'
 ```
 
 - 在maven中：
@@ -40,7 +43,7 @@
 <dependency>
 	<groupId>spa.lyh.cn</groupId>
 	<artifactId>immersion-sdk</artifactId>
-	<version>1.0.5</version>
+	<version>1.0.6</version>
 	<type>pom</type>
 </dependency>
 ```
@@ -129,11 +132,11 @@ public static int DISABLE = 101;
 
 - 沉浸式状态栏的实现思路
 
-    `API LEVEL >= 19 && API LEVEL < 21`:
+    `API LEVEL >= 19 && API LEVEL < 23`:
 
     使用`window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);`开启沉浸式并在状态栏位置添加一个带有对应颜色的View填充
 
-    `API LEVEL >= 21`:
+    `API LEVEL >= 23`:
     ```java
     Window window = activity.getWindow();
     window.setStatusBarColor(color);
@@ -163,8 +166,8 @@ public static int DISABLE = 101;
     ```
 ## 注意事项
 
-- 因为`API LEVEL >= 19 && API LEVEL < 21`时，使用的沉浸式开发，方法`immersionMode.execImmersionMode(this);`会在`setContentView()`完成以后立刻调用，又因为沉浸式开发，是不可逆的设置，意思就是如果开启沉浸式，除非重新加载`Activity`否则无法翻转此状态。所以想要关闭本框架，那么对应方法必须在`setContentView()`之前调用，否则在`Android4.4`上会出现框架依然启动的BUG。
-- 最低`API LEVEL >= 21`时，可以无视上述问题，因为`Android5.0`以上并没有使用沉浸式开发，所以使用本框架可以不许重写`setContentView()`等种种限制运行顺序和生命周期的方式，只要在`onResume()`之前任意位置调用即可。
+- 因为`API LEVEL >= 19 && API LEVEL < 23`时，使用的沉浸式开发，方法`immersionMode.execImmersionMode(this);`会在`setContentView()`完成以后立刻调用，又因为沉浸式开发，是不可逆的设置，意思就是如果开启沉浸式，除非重新加载`Activity`否则无法翻转此状态。所以想要关闭本框架，那么对应方法必须在`setContentView()`之前调用，否则在`Android4.4`上会出现框架依然启动的BUG。
+- 最低`API LEVEL >= 23`时，可以无视上述问题，因为`Android5.0`以上并没有使用沉浸式开发，所以使用本框架可以不许重写`setContentView()`等种种限制运行顺序和生命周期的方式，只要在`onResume()`之前任意位置调用即可。
 
 
 ## 联系方式

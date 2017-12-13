@@ -22,6 +22,7 @@ import static spa.lyh.cn.statusbarlightmode.barutils.barUtils.transparencyBar;
 
 public class ImmersionHelper {
 
+
     public static View statusBarFitToAPP(Activity activity, int color){
         int redValue = Color.red(color);
         int greenValue = Color.green(color);
@@ -35,7 +36,7 @@ public class ImmersionHelper {
     }
 
     private static View changeStatusBarColor(Activity activity,int color){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             Window window = activity.getWindow();
             window.setStatusBarColor(color);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {

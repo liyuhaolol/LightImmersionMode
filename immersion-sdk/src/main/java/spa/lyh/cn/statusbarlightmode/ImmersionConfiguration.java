@@ -11,8 +11,8 @@ import android.util.Log;
 public class ImmersionConfiguration {
     private static String TAG = "ImmersionConfiguration";
 
-    public static int ENABLE = 100;
-    public static int DISABLE = 101;
+    final public static int ENABLE = 100;
+    final public static int DISABLE = 101;
     Context context;
     int enable;
     int defaultColor;

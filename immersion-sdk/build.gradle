@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 11
         targetSdkVersion 24
-        versionCode 4
-        versionName "1.0.5"
+        versionCode 5
+        versionName "1.0.6"
 
     }
     buildTypes {
@@ -29,7 +29,7 @@ def libName = 'LightImmersionMode'
 
 group = "spa.lyh.cn"
 
-version = "1.0.5"
+version = "1.0.6"
 
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
