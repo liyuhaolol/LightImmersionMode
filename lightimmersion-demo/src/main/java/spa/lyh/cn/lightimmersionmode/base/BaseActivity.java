@@ -51,7 +51,7 @@ public class BaseActivity extends AppCompatActivity{
 
     /**
      * 这个方法必须在setContentView()之前调用，因为沉浸式是不可逆的过程
-     * 沉浸式一旦启动，就不可逆，请注意!此方法主要为了兼容sdk 21以下，sdk 21以上为新api，与沉浸式无关
+     * 沉浸式一旦启动，就不可逆，请注意!此方法主要为了兼容sdk 23以下，sdk 23以上为新api，与沉浸式无关
      */
     public void DisableImmersionMode(){
         if (!flag){
@@ -65,13 +65,13 @@ public class BaseActivity extends AppCompatActivity{
     }
 
     /**
-     * 只工作在sdk19到21之间，这个方法实际开发中不一定会用到
+     * 只工作在sdk19到23之间，这个方法实际开发中不一定会用到
      */
     public void setGONEtoStatusview(){
         immersionMode.setStarusViewGONE();
     }
     /**
-     * 只工作在sdk19到21之间，这个方法实际开发中不一定会用到
+     * 只工作在sdk19到23之间，这个方法实际开发中不一定会用到
      */
     public void setVISIBLEtoStatusview(){
         immersionMode.setStarusViewVISIBLE();
