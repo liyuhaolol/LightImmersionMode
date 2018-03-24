@@ -35,6 +35,7 @@ public class ImmersionMode {
         }
         return instance;
     }
+    
 
     public synchronized void init(ImmersionConfiguration configuration){
         if (configuration == null){
