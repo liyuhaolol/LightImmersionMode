@@ -14,7 +14,7 @@ import spa.lyh.cn.statusbarlightmode.helpers.lightmode.MIUIHelper;
 
 import static spa.lyh.cn.statusbarlightmode.barutils.barUtils.getStatusBarHeight;
 import static spa.lyh.cn.statusbarlightmode.barutils.barUtils.isLightRGB;
-import static spa.lyh.cn.statusbarlightmode.barutils.barUtils.transparencyBar;
+import static spa.lyh.cn.statusbarlightmode.barutils.barUtils.transparencyBarAPI19;
 
 /**
  * Created by liyuhao on 2017/4/26.
@@ -35,23 +35,42 @@ public class ImmersionHelper {
         return v;
     }
 
+    /**
+     * 没想好叫啥
+     * @param activity
+     * @param color
+     * @return
+     */
     private static View changeStatusBarColor(Activity activity,int color){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = activity.getWindow();
             window.setStatusBarColor(color);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            transparencyBar(activity);
+            //设置开启沉浸式，并设置对应的必要属性
+            transparencyBarAPI19(activity);
+            //得到布局最底层的decorView
             ViewGroup vg = (ViewGroup) activity.getWindow().getDecorView();
+            //实例化一个状态栏的填充view
             View v = new View(activity);
+            //设置状态栏高度
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,getStatusBarHeight(activity));
+            //设置背景颜色
             v.setBackgroundColor(color);
+            //设置宽高属性
             v.setLayoutParams(params);
+            //添加状态栏填充view到decorView
             vg.addView(v);
             return v;
         }
         return null;
     }
 
+    /**
+     * 设置状态栏深浅字颜色的方法
+     * @param activity
+     * @param isLightMode
+     * @return
+     */
     private static boolean setStatusBarMode(Activity activity,boolean isLightMode){
         boolean flag = false;
         /*if (new MIUIHelper().setLightMode(activity,isLightMode)){

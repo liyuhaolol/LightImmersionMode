@@ -52,7 +52,7 @@ public class barUtils {
      * @param activity activity对象
      */
     @TargetApi(19)
-    public static void transparencyBar(Activity activity) {
+    public static void transparencyBarAPI19(Activity activity) {
         Window window = activity.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         ViewGroup vg = (ViewGroup) ((ViewGroup) activity.findViewById(android.R.id.content)).getChildAt(0);

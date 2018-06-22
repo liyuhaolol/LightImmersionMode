@@ -14,14 +14,21 @@ public class AndroidMHelper implements ILightModeHelper{
     @Override
     public boolean setLightMode(Activity activity, boolean isLightMode) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            View view = activity.getWindow().getDecorView();
+            int oldVis = view.getSystemUiVisibility();
+            int newVis = oldVis;
             if (isLightMode){
-                activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+                newVis |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
             }else {
-                activity.getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+                newVis &= ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
             }
+            if (newVis != oldVis) {
+                view.setSystemUiVisibility(newVis);
+            }
+
             return true;
         }
-        Log.e("LightModeException","Failed to match Android 6.0");
+        Log.w("LightModeException","Failed to match Android 6.0");
         return false;
     }
 }
