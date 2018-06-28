@@ -41,7 +41,7 @@
 
 - 在gradle中:
 ```
-    compile 'spa.lyh.cn:immersion-sdk:1.0.6'
+    compile 'spa.lyh.cn:immersion-sdk:1.0.7'
 ```
 
 - 在maven中：
@@ -50,7 +50,7 @@
 <dependency>
 	<groupId>spa.lyh.cn</groupId>
 	<artifactId>immersion-sdk</artifactId>
-	<version>1.0.6</version>
+	<version>1.0.7</version>
 	<type>pom</type>
 </dependency>
 ```
@@ -179,6 +179,7 @@ public static int DISABLE = 101;
 
 ## 联系方式
 
+- 交流群：812402992(目前没啥人，233，可以得到专属服务哦)
 - Github: https://github.com/liyuhaolol
 - 博客: http://blog.csdn.net/ccffvii
 - 邮箱: liyuhaoid@sina.com
