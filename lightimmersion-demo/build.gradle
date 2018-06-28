@@ -20,6 +20,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:27.1.1'
-    //implementation 'spa.lyh.cn:immersion-sdk:1.0.6'
-    implementation project(':immersion-sdk')
+    implementation 'spa.lyh.cn:immersion-sdk:1.0.7'
+    //implementation project(':immersion-sdk')
 }

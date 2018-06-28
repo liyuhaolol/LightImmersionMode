@@ -6,6 +6,13 @@
 
 <div><img src='https://github.com/liyuhaolol/LightImmersionMode/blob/master/pic/01.gif' width="480px"/></div>
 
+# 1.0.7更新
+
+- 支持ColorOS系统的沉浸式相关功能
+
+- 回滚`Android5.0`的相关修改，现在基于原生安卓的系统上（如三星的系统，华为的EMUI等），`Android5.0`将不能显示深色字体。深度定制的系统不受影响如MIUI，Flyme，ColorOS。如果十分在意这个问题，请不要使用浅色状态栏。
+
+
 # 1.0.6更新
 
 - 将`Android5.0`以下的状态栏颜色显示状态统一交付给Android底层处理，用来统一处理浅色状态栏字体显示不清的问题，具体影响为`API LEVEL = 21`的设备将无法设置你指定的状态栏颜色，因为底层会对你传来的状态栏进行二次处理。具体表现形式为`API LEVEL = 19`的设备将显示齿状暗纹，`API LEVEL = 21`的设备将整体显示变灰，目前已在原生系统上测试通过，本框架将不会对小于`Android6.0`暴力深度定制的第三方rom出现的问题进行适配，只会徒增烦恼而已。
