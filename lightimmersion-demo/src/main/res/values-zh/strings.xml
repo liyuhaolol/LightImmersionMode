@@ -15,5 +15,5 @@
     <string name="make_visible">VISIBLE</string>
     <string name="note">本Activity不是继承自BaseActivity,不能修改状态栏</string>
     <string name="disable_note">本Activity继承自BaseActivity, 但是关闭了Immersionmode</string>
-    <string name="gone_note">这个方法只工作在sdk 21以下!!!!</string>
+    <string name="gone_note">这个方法只工作在sdk 19以下!!!!</string>
 </resources>

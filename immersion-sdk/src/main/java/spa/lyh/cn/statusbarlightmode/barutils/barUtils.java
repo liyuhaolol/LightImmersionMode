@@ -60,6 +60,20 @@ public class barUtils {
         vg.setClipToPadding(false);
     }
 
+    /**
+     * 修改状态栏为全透明沉浸式
+     *
+     * @param activity activity对象
+     */
+    @TargetApi(21)
+    public static void transparencyBarAPI21(Activity activity) {
+        Window window = activity.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(Color.TRANSPARENT);
+        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+    }
+
     public static Bitmap getBitmapFromView(View v)
     {
         Bitmap b = Bitmap.createBitmap(v.getWidth(), v.getHeight(), Bitmap.Config.RGB_565);

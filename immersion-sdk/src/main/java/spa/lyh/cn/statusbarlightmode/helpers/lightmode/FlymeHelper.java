@@ -30,13 +30,13 @@ public class FlymeHelper implements ILightModeHelper{
             try {
                 mSetStatusBarDarkIcon = Activity.class.getMethod("setStatusBarDarkIcon", boolean.class);
             } catch (NoSuchMethodException e) {
-                Log.e("LightModeException","Can not found Flyme Method");
+                Log.w("LightModeException","Can not found Flyme Method");
                 return false;
             }
             try {
                 mStatusBarColorFiled = WindowManager.LayoutParams.class.getField("statusBarColor");
             } catch (NoSuchFieldException e) {
-                Log.e("LightModeException","Can not found Flyme Method");
+                Log.w("LightModeException","Can not found Flyme Method");
                 return false;
             }
             if (mSetStatusBarDarkIcon != null) {
@@ -44,7 +44,7 @@ public class FlymeHelper implements ILightModeHelper{
                     mSetStatusBarDarkIcon.invoke(activity, isLightMode);
                     return true;
                 } catch (Exception e) {
-                    Log.e("LightModeException","Failed to match Flyme");
+                    Log.w("LightModeException","Failed to match Flyme");
                     return false;
                 }
             } else {
@@ -115,7 +115,7 @@ public class FlymeHelper implements ILightModeHelper{
                 return true;
             }
         } catch (Exception e) {
-            Log.e("LightModeException","Failed to match Flyme");
+            Log.w("LightModeException","Failed to match Flyme");
         }
         return false;
     }

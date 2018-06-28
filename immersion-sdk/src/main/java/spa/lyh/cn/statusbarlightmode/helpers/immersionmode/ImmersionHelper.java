@@ -3,12 +3,14 @@ package spa.lyh.cn.statusbarlightmode.helpers.immersionmode;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 
 import spa.lyh.cn.statusbarlightmode.ImmersionMode;
 import spa.lyh.cn.statusbarlightmode.helpers.lightmode.AndroidMHelper;
+import spa.lyh.cn.statusbarlightmode.helpers.lightmode.ColorOSHelper;
 import spa.lyh.cn.statusbarlightmode.helpers.lightmode.FlymeHelper;
 import spa.lyh.cn.statusbarlightmode.helpers.lightmode.MIUIHelper;
 
@@ -80,7 +82,7 @@ public class ImmersionHelper {
         }else if (new AndroidMHelper().setLightMode(activity,isLightMode)){
             flag = true;
         }*/
-
+        Log.e("liyuhao",ImmersionMode.getInstance().getPhoneType()+"");
         switch (ImmersionMode.getInstance().getPhoneType()){
             case 1:
                 if (new MIUIHelper().setLightMode(activity,isLightMode)){
@@ -110,6 +112,13 @@ public class ImmersionHelper {
                 }
                 break;
             case 4:
+                if (new ColorOSHelper().setLightMode(activity,isLightMode)){
+                    ImmersionMode.getInstance().setPhoneType(4);
+                    flag = true;
+                }else {
+                    ImmersionMode.getInstance().setPhoneType(0);
+                    flag = false;
+                }
                 break;
             case 0:
             default:
@@ -122,7 +131,7 @@ public class ImmersionHelper {
                 }else if (new AndroidMHelper().setLightMode(activity,isLightMode)){
                     ImmersionMode.getInstance().setPhoneType(3);
                     flag = true;
-                }else {
+                }else if (new ColorOSHelper().setLightMode(activity,isLightMode)){
                     ImmersionMode.getInstance().setPhoneType(4);
                     flag = true;
                 }

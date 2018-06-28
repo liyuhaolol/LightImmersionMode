@@ -15,5 +15,5 @@
     <string name="make_visible">VISIBLE</string>
     <string name="note">This activity is not extend from BaseActivity, can not change statusBar</string>
     <string name="disable_note">This activity extend from BaseActivity, but disable Immersionmode</string>
-    <string name="gone_note">this function only work blow sdk 21!!!!</string>
+    <string name="gone_note">this function only work blow sdk 19!!!!</string>
 </resources>

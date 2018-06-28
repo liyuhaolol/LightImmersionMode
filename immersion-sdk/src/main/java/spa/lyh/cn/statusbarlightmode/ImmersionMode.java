@@ -21,7 +21,7 @@ public class ImmersionMode {
 
     private View starusView;
 
-    //手机型号或者版本,0为未检测,1为MIUI,2为Flyme,3为Android6.0以上,4为Android6.0以下
+    //手机型号或者版本,0为未检测,1为MIUI,2为Flyme,3为Android6.0以上,4为OPPO的5.1版本以及其他Android版本
     private int PhoneType = 0;
 
 
