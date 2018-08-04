@@ -82,7 +82,7 @@ public class ImmersionHelper {
         }else if (new AndroidMHelper().setLightMode(activity,isLightMode)){
             flag = true;
         }*/
-        Log.e("liyuhao",ImmersionMode.getInstance().getPhoneType()+"");
+        //Log.e("liyuhao",ImmersionMode.getInstance().getPhoneType()+"");
         switch (ImmersionMode.getInstance().getPhoneType()){
             case 1:
                 if (new MIUIHelper().setLightMode(activity,isLightMode)){
