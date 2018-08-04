@@ -34,6 +34,7 @@ public class BaseActivity extends AppCompatActivity{
     public void changeStatusBarColor(int ResId){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
             ImmersionConfiguration tConfig = new ImmersionConfiguration.Builder(this)
+                    .enableImmersionMode(ImmersionConfiguration.ENABLE,ImmersionConfiguration.ENABLE)
                     .setColor(ResId)
                     .setNavigationBarColor(ResId)
                     .build();
@@ -44,6 +45,7 @@ public class BaseActivity extends AppCompatActivity{
     public void changeStatusBarColor(String color){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
             ImmersionConfiguration tConfig = new ImmersionConfiguration.Builder(this)
+                    .enableImmersionMode(ImmersionConfiguration.ENABLE,ImmersionConfiguration.ENABLE)
                     .setColor(color)
                     .setNavigationBarColor(color)
                     .build();
@@ -59,7 +61,7 @@ public class BaseActivity extends AppCompatActivity{
     public void DisableImmersionMode(){
         if (!flag){
             ImmersionConfiguration tConfig = new ImmersionConfiguration.Builder(this)
-                    .enableImmersionMode(ImmersionConfiguration.DISABLE)
+                    .enableImmersionMode(ImmersionConfiguration.DISABLE,ImmersionConfiguration.DISABLE)
                     .build();
             immersionMode.setTemporaryConfig(tConfig);
         }else {

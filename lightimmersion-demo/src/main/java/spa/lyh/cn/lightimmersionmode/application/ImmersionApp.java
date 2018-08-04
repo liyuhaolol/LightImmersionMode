@@ -15,7 +15,7 @@ public class ImmersionApp extends Application{
     public void onCreate() {
         super.onCreate();
         ImmersionConfiguration configuration = new ImmersionConfiguration.Builder(this)
-                .enableImmersionMode(ImmersionConfiguration.ENABLE)
+                .enableImmersionMode(ImmersionConfiguration.ENABLE,ImmersionConfiguration.ENABLE)
                 .setColor(R.color.bar_color)
                 .setNavigationBarColor(R.color.bar_color)
                 .build();

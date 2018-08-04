@@ -17,6 +17,7 @@ public class ImmersionConfiguration {
     final public static int DISABLE = 101;
     Context context;
     int enable;
+    int navigationBarEnable;
     int defaultColor;
     int navigationBarColor;
 
@@ -25,14 +26,18 @@ public class ImmersionConfiguration {
     private ImmersionConfiguration(ImmersionConfiguration.Builder builder){
         this.context = builder.context;
         this.enable = builder.enable;
+        this.navigationBarEnable = builder.navigationBarEnable;
         this.defaultColor = builder.defaultColor;
         this.navigationBarColor = builder.navigationBarColor;
     }
 
-
+    public static String getBlackColor(){
+        return blackColor;
+    }
     public static class Builder{
         Context context;
         int enable;
+        int navigationBarEnable;
         int defaultColor;
         int navigationBarColor;
         int statusBarViewId;
@@ -40,8 +45,9 @@ public class ImmersionConfiguration {
             this.context = context;
         }
 
-        public ImmersionConfiguration.Builder enableImmersionMode(int enable){
-            this.enable = enable;
+        public ImmersionConfiguration.Builder enableImmersionMode(int StatusBarEnable, int navigationBarEnable){
+            this.enable = StatusBarEnable;
+            this.navigationBarEnable = navigationBarEnable;
             return this;
         }
 
@@ -49,7 +55,6 @@ public class ImmersionConfiguration {
             this.statusBarViewId = resID;
             return this;
         }*/
-
         public ImmersionConfiguration.Builder setColor(String color){
             try{
                 this.defaultColor = Color.parseColor(color);
@@ -91,6 +96,9 @@ public class ImmersionConfiguration {
         private void initEmptyFieldsWithDefaultValues(){
             if (this.enable == 0){
                 this.enable = ENABLE;
+            }
+            if (this.navigationBarEnable == 0){
+                this.navigationBarEnable = DISABLE;
             }
             if (this.defaultColor == 0){
                 this.defaultColor = Color.parseColor(blackColor);

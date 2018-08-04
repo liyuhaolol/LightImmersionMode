@@ -1,6 +1,7 @@
 package spa.lyh.cn.statusbarlightmode;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Build;
 import android.util.Log;
 import android.view.View;
@@ -71,8 +72,10 @@ public class ImmersionMode {
             if (configuration.enable == ImmersionConfiguration.ENABLE){
 
                 starusView = ImmersionHelper.statusBarFitToAPP(activity,configuration.defaultColor);
-                ImmersionHelper.NavigationBarFitToAPP(activity,configuration.navigationBarColor);
                 mark = true;
+            }
+            if (configuration.navigationBarEnable == ImmersionConfiguration.ENABLE){
+                ImmersionHelper.NavigationBarFitToAPP(activity,configuration.navigationBarColor);
             }
 
             configuration = config;
@@ -83,7 +86,7 @@ public class ImmersionMode {
 
     private ImmersionConfiguration backupConfig(ImmersionConfiguration configuration){
         ImmersionConfiguration config = new ImmersionConfiguration.Builder(configuration.context)
-                .enableImmersionMode(configuration.enable)
+                .enableImmersionMode(configuration.enable,configuration.navigationBarEnable)
                 .setIntColor(configuration.defaultColor)
                 .setNavigationBarIntColor(configuration.navigationBarColor)
                 .build();
@@ -91,8 +94,21 @@ public class ImmersionMode {
     }
     private void setTemporaryConfiguration(ImmersionConfiguration tConfig){
             configuration.enable = tConfig.enable;
+            if (configuration.navigationBarEnable == ImmersionConfiguration.ENABLE){
+                //默认配置为启动导航栏
+                if (tConfig.navigationBarEnable == ImmersionConfiguration.DISABLE){
+                    //修改配置为关闭导航栏
+                    configuration.navigationBarEnable = ImmersionConfiguration.ENABLE;
+                    configuration.navigationBarColor = Color.parseColor(ImmersionConfiguration.getBlackColor());
+                }else {
+                    configuration.navigationBarEnable = tConfig.navigationBarEnable;
+                    configuration.navigationBarColor = tConfig.navigationBarColor;
+                }
+            }else {
+                configuration.navigationBarEnable = tConfig.navigationBarEnable;
+                configuration.navigationBarColor = tConfig.navigationBarColor;
+            }
             configuration.defaultColor = tConfig.defaultColor;
-            configuration.navigationBarColor = tConfig.navigationBarColor;
     }
 
     /**
