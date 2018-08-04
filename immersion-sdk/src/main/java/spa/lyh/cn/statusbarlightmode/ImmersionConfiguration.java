@@ -18,13 +18,15 @@ public class ImmersionConfiguration {
     Context context;
     int enable;
     int defaultColor;
+    int navigationBarColor;
 
-    final private static String grayColor = "#D0D0D0";
+    final private static String blackColor = "#000000";
 
     private ImmersionConfiguration(ImmersionConfiguration.Builder builder){
         this.context = builder.context;
         this.enable = builder.enable;
         this.defaultColor = builder.defaultColor;
+        this.navigationBarColor = builder.navigationBarColor;
     }
 
 
@@ -32,6 +34,7 @@ public class ImmersionConfiguration {
         Context context;
         int enable;
         int defaultColor;
+        int navigationBarColor;
         int statusBarViewId;
         public Builder(Context context){
             this.context = context;
@@ -52,7 +55,7 @@ public class ImmersionConfiguration {
                 this.defaultColor = Color.parseColor(color);
             }catch (Exception e){
                 Log.e(TAG,"Unknown defaultColor");
-                this.defaultColor = Color.parseColor(grayColor);
+                this.defaultColor = Color.parseColor(blackColor);
             }
             return this;
         }
@@ -64,6 +67,23 @@ public class ImmersionConfiguration {
             this.defaultColor = color;
             return this;
         }
+        public ImmersionConfiguration.Builder setNavigationBarColor(String color){
+            try{
+                this.navigationBarColor = Color.parseColor(color);
+            }catch (Exception e){
+                Log.e(TAG,"Unknown defaultColor");
+                this.navigationBarColor = Color.parseColor(blackColor);
+            }
+            return this;
+        }
+        public ImmersionConfiguration.Builder setNavigationBarColor(@ColorRes int resID){
+            this.navigationBarColor = context.getResources().getColor(resID);
+            return this;
+        }
+        public ImmersionConfiguration.Builder setNavigationBarIntColor(int color){
+            this.navigationBarColor = color;
+            return this;
+        }
         public ImmersionConfiguration build(){
             this.initEmptyFieldsWithDefaultValues();
             return new ImmersionConfiguration(this);
@@ -73,7 +93,10 @@ public class ImmersionConfiguration {
                 this.enable = ENABLE;
             }
             if (this.defaultColor == 0){
-                this.defaultColor = Color.parseColor(grayColor);
+                this.defaultColor = Color.parseColor(blackColor);
+            }
+            if (this.navigationBarColor == 0){
+                this.navigationBarColor = Color.parseColor(blackColor);
             }
         }
     }

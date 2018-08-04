@@ -71,6 +71,7 @@ public class ImmersionMode {
             if (configuration.enable == ImmersionConfiguration.ENABLE){
 
                 starusView = ImmersionHelper.statusBarFitToAPP(activity,configuration.defaultColor);
+                ImmersionHelper.NavigationBarFitToAPP(activity,configuration.navigationBarColor);
                 mark = true;
             }
 
@@ -84,12 +85,14 @@ public class ImmersionMode {
         ImmersionConfiguration config = new ImmersionConfiguration.Builder(configuration.context)
                 .enableImmersionMode(configuration.enable)
                 .setIntColor(configuration.defaultColor)
+                .setNavigationBarIntColor(configuration.navigationBarColor)
                 .build();
         return config;
     }
     private void setTemporaryConfiguration(ImmersionConfiguration tConfig){
             configuration.enable = tConfig.enable;
             configuration.defaultColor = tConfig.defaultColor;
+            configuration.navigationBarColor = tConfig.navigationBarColor;
     }
 
     /**

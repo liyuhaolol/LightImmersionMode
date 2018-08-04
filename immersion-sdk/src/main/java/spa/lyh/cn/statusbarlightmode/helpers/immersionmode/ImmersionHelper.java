@@ -139,4 +139,42 @@ public class ImmersionHelper {
         }
         return flag;
     }
+
+    public static void NavigationBarFitToAPP(Activity activity, int color){
+        //由于android8.0才加入通用的明暗导航栏模式，所以目前只运行在android8.0以上
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            int redValue = Color.red(color);
+            int greenValue = Color.green(color);
+            int blueValue = Color.blue(color);
+            int[] colorArry = new int[]{redValue,greenValue,blueValue};
+            //修改对应的颜色
+            activity.getWindow().setNavigationBarColor(color);
+            //调整导航栏模式
+            if (isLightRGB(colorArry)){
+                //浅色
+                setSystemUiVisibility(activity.getWindow().getDecorView(),View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR,true);
+            }else {
+                //深色
+                setSystemUiVisibility(activity.getWindow().getDecorView(),View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR,false);
+            }
+        }
+    }
+
+    /**
+     * 设置显示的样式
+     * @param decorView
+     * @param visibility
+     */
+    private static void setSystemUiVisibility(View decorView,int visibility,boolean isAddVisibility){
+        int oldVis = decorView.getSystemUiVisibility();
+        int newVis = oldVis;
+        if (isAddVisibility){
+            newVis |= visibility;
+        }else {
+            newVis &= ~visibility;
+        }
+        if (newVis != oldVis) {
+            decorView.setSystemUiVisibility(newVis);
+        }
+    }
 }
