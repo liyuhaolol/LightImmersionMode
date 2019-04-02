@@ -2,7 +2,7 @@ package spa.lyh.cn.statusbarlightmode;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.annotation.ColorRes;
+//import androidx.annotation.ColorRes;
 import android.util.Log;
 
 
@@ -64,7 +64,7 @@ public class ImmersionConfiguration {
             }
             return this;
         }
-        public ImmersionConfiguration.Builder setColor(@ColorRes int resID){
+        public ImmersionConfiguration.Builder setColor(int resID){
             this.defaultColor = context.getResources().getColor(resID);
             return this;
         }
@@ -81,7 +81,7 @@ public class ImmersionConfiguration {
             }
             return this;
         }
-        public ImmersionConfiguration.Builder setNavigationBarColor(@ColorRes int resID){
+        public ImmersionConfiguration.Builder setNavigationBarColor(int resID){
             this.navigationBarColor = context.getResources().getColor(resID);
             return this;
         }

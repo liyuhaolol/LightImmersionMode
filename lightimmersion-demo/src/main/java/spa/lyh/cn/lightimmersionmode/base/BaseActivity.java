@@ -2,11 +2,10 @@ package spa.lyh.cn.lightimmersionmode.base;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
-import spa.lyh.cn.lightimmersionmode.R;
 import spa.lyh.cn.statusbarlightmode.ImmersionConfiguration;
 import spa.lyh.cn.statusbarlightmode.ImmersionMode;
 

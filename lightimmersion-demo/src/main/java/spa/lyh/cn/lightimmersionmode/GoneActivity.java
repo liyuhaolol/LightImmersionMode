@@ -1,7 +1,7 @@
 package spa.lyh.cn.lightimmersionmode;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 
 import spa.lyh.cn.lightimmersionmode.base.BaseActivity;

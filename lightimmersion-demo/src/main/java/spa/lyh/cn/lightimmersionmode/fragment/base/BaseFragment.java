@@ -3,7 +3,7 @@ package spa.lyh.cn.lightimmersionmode.fragment.base;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 /**
  * Created by liyuhao on 2017/4/26.
