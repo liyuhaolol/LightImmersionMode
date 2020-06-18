@@ -4,7 +4,7 @@
 
 # 效果演示
 
-<div><img src='https://github.com/liyuhaolol/LightImmersionMode/blob/master/pic/01.gif' width="480px"/></div>
+<div><img src='https://raw.githubusercontent.com/liyuhaolol/LightImmersionMode/master/pic/01.gif' width="480px"/></div>
 
 # 1.0.7更新
 
@@ -46,7 +46,6 @@
 
 - 在maven中：
 ```
-
 <dependency>
 	<groupId>spa.lyh.cn</groupId>
 	<artifactId>immersion-sdk</artifactId>
