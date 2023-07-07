@@ -1,3 +1,10 @@
+# 重要警示
+# 本项目是本弱鸡早年对沉浸式的一些自我思考和总结代码，后续在工作中发现这个解决方案在应对各种UI需求下，存在很多缺陷，并且没有必要为了沉浸式单独做一个框架，所以早就已经停止了更新。
+# 这个小项目仅能做状态栏的沉浸，并不能做导航栏的沉浸，正因为如此，我舍弃了本项目，自己重新写了一个工具类，其中完整包含了导航栏和状态栏的沉浸适配方案。一起其他加密，弹窗，像素等综合性的工具框架，并且持续更新中，只要我还是程序员，就会更新这个框架，因为我自己也在用。有兴趣的可以去看一下，链接下面
+
+[CommonUtils](https://github.com/liyuhaolol/CommonUtils) 
+
+
 # LightImmersionMode
 
 十分方便的实现纯色沉浸式状态栏的开发，只需要使用代码，不需要在布局额外写任何东西
@@ -130,7 +137,7 @@ public static int DISABLE = 101;
 
 - `ImmersionConfiguration`的属性设置方法
 
-    `enableImmersionMode()`:是否启动沉浸式状态栏，默认为：`ENABLE`
+    `enableImmersionMode()`:是否启动沉浸式状态栏，默认为：`启用`
 
     `setColor()`:传入资源id或者String型Color，默认为：`#D0D0D0`
 
